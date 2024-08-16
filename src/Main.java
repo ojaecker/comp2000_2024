@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.awt.Color;
 
-//PART 1
+//PART 2
 
 public class Main extends JFrame{
 	public static void main(String[] args) throws Exception {
@@ -33,16 +33,16 @@ public class Main extends JFrame{
 			super.paint(g); // clear the previous drawings
 			grid.paint(g, getMousePosition()); 
 			
-			Point currentMousePos = getMousePosition();
+			/*Point currentMousePos = getMousePosition();
             if (currentMousePos != null) {
                 if (mousePos.size() > 99) {
                     mousePos.remove(0); // remove the oldest position
                 }
                 mousePos.add(new Point(currentMousePos));
-            }
-            if(!mousePos.isEmpty()){
-				mousePos.remove(0);
-			}
+            }*/
+      //if(!mousePos.isEmpty()){
+			//	mousePos.remove(0);
+			//}
 			
 			for (int i = 0; i < mousePos.size(); i++) {
 				Point p = mousePos.get(i);
@@ -57,6 +57,9 @@ public class Main extends JFrame{
 		public void mouseMoved(MouseEvent e) {
 			if(e.getPoint() != null){
 				mousePos.add(e.getPoint());
+        if (mousePos.size() > 99) {
+                    mousePos.remove(0); // remove the oldest position
+        }
 			}
 			repaint();
 		}
