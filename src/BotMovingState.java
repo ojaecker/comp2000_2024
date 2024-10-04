@@ -34,9 +34,11 @@ public class BotMovingState extends StateCommon {
       stage.actors.stream().map(a -> a.loc).collect(Collectors.toSet())
     );
     // un-comment the following lines and complete them
-    //Stream<Cell> init = stage.grid.getRadius(from, size)
+    //Stream<Cell> init = stage.grid.getRadius(actorLocs, size);
     //Stream<Cell> clear = 
     //return clear.collect(Collectors.toList());
+
+    //actor come in location come out
 
     // remove the lines below
     List<Cell> init = stage.grid.getRadius(from, size);

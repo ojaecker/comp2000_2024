@@ -15,7 +15,8 @@ public class ChoosingActorState extends StateCommon {
     stage.actorInAction = Optional.empty();
     for(Actor a: stage.actors) {
       if(a.loc.contains(x, y) && a.isHuman()) {
-        stage.cellOverlay = stage.grid.getRadius(a.loc, a.moves);
+        stage.cellOverlay = new BotMovingState(stage).getClearRadius(a.loc, a.moves);
+        //stage.cellOverlay = stage.grid.getRadius(a.loc, a.moves);
         stage.actorInAction = Optional.of(a);
         stage.currentState = new SelectingNewLocationState(stage);
       }

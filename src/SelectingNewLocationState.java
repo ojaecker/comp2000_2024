@@ -34,6 +34,8 @@ public class SelectingNewLocationState extends StateCommon {
       } else {
         stage.currentState = new BotMovingState(stage);
       }
+    } else {
+      stage.currentState = new ChoosingActorState(stage);
     }
   }
 }
