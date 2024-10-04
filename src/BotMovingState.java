@@ -30,22 +30,28 @@ public class BotMovingState extends StateCommon {
   public List<Cell> getClearRadius(Cell from, int size) {
     // task 20
     // create a Set of Actor locations that can be filtered out
-    final Set<Cell> actorLocs = new HashSet<Cell>(
-      stage.actors.stream().map(a -> a.loc).collect(Collectors.toSet())
-    );
+    // final Set<Cell> actorLocs = new HashSet<Cell>(
+    //   stage.actors.stream().map(a -> a.loc).collect(Collectors.toSet())
+    // );
     // un-comment the following lines and complete them
-    //Stream<Cell> init = stage.grid.getRadius(actorLocs, size);
-    //Stream<Cell> clear = 
-    //return clear.collect(Collectors.toList());
+    // Stream<Cell> init = stage.grid.getRadius(from, size).stream();
+    // Stream<Cell> clear = init.filter(cell -> !actorLocs.contains(cell));
+    // return clear.collect(Collectors.toList());
+
+    return stage.grid.getRadius(from, size).stream()
+      .filter(cell -> stage.actors.stream()
+        .map(a -> a.loc)
+        .noneMatch(aLoc -> aLoc.equals(cell)))
+      .collect(Collectors.toList());
 
     //actor come in location come out
-
+    // one line version
     // remove the lines below
-    List<Cell> init = stage.grid.getRadius(from, size);
-    for(Actor a: stage.actors) {
-      init.remove(a.loc);
-    }
-    return init;
+    //List<Cell> init = stage.grid.getRadius(from, size);
+    //for(Actor a: stage.actors) {
+    //  init.remove(a.loc);
+    //}
+    //return init;
   }
 
   public void mouseClicked(int x, int y) {
